@@ -7,13 +7,16 @@ import {
     VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
-
 const { Header, Sider, Content } = Layout;
-
 export const RouterPage = () => {
+    const [collapsed, setCollapsed] = useState(false);
+    const {
+        token: { colorBgContainer, borderRadiusLG },
+    } = theme.useToken()
     return (
-        <Layout>
-            <Sider>
+
+        <Layout style={{ height: '100vh' }}>
+            <Sider >
                 <div className="demo-logo-vertical" />
                 <Menu
                     theme="dark"
@@ -23,22 +26,39 @@ export const RouterPage = () => {
                         {
                             key: '1',
                             icon: <UserOutlined />,
-                            label: 'nav 1',
+                            label: 'Ingresar',
                         },
                         {
                             key: '2',
                             icon: <VideoCameraOutlined />,
-                            label: 'nav 2',
+                            label: 'Cola',
                         },
                         {
                             key: '3',
                             icon: <UploadOutlined />,
-                            label: 'nav 3',
+                            label: 'Crear ticket',
                         },
                     ]}
                 />
             </Sider>
             <Layout>
+                <Header
+                    style={{
+                        padding: 0,
+                        background: colorBgContainer,
+                    }}
+                >
+                    {/* <Button
+                        type="text"
+                        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                        onClick={() => setCollapsed(!collapsed)}
+                        style={{
+                            fontSize: '16px',
+                            width: 64,
+                            height: 64,
+                        }}
+                    /> */}
+                </Header>
                 <Content
                     style={{
                         margin: '24px 16px',
@@ -52,5 +72,5 @@ export const RouterPage = () => {
                 </Content>
             </Layout>
         </Layout>
-    )
+    );
 }
