@@ -1,11 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
 import { TicketApp } from './TicketApp';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { AppRouter } from './router/AppRouter';
+ 
+const root = createRoot(document.getElementById('root'));
+ 
 root.render(
-  <>
-    <TicketApp />
-  </>
-);
+  <React.StrictMode>
+    <AppRouter>
+      <TicketApp />
+    </AppRouter>
+  </React.StrictMode>,
+)
