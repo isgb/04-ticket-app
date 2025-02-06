@@ -15,17 +15,17 @@ export const Ingresar = () => {
 
   useHideMenu(false);
 
-  const onFinish = ({agente, escritorio}) => {
+  const onFinish = ({ agente, escritorio }) => {
     localStorage.setItem('agente', agente);
     localStorage.setItem('escritorio', escritorio);
 
-    navigate('/escritorio');  
+    navigate('/escritorio');
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
-  
+
   return (
     <>
       <Title level={2}>Ingresar</Title>
