@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Checkbox, Divider, Form, Input, InputNumber, Typography } from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router';
 import { useHideMenu } from '../hooks/useHideMenu';
+import { getUsuarioStorage } from '../helpers/getUsuarioStorage';
 
 const { Title, Text } = Typography;
 
 export const Ingresar = () => {
 
   const navigate = useNavigate();
+
+  const [usuario] = useState(getUsuarioStorage());
+
   useHideMenu(false);
 
   const onFinish = ({agente, escritorio}) => {
