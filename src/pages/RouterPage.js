@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     UploadOutlined,
     UserOutlined,
@@ -10,6 +10,7 @@ import {CreateTicket} from './CreateTicket';
 import { Ingresar } from './Ingresar';
 import { Cola } from './Cola';
 import { Escritorio } from './Escritorio';
+import { UiContext } from '../context/UiContext';
 
 const { Header, Sider, Content } = Layout;
 
@@ -18,9 +19,15 @@ export const RouterPage = () => {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
+    const {ocultarMenu} = useContext(UiContext);
+
     return (
         <Layout style={{ height: '100vh' }}>
-            <Sider collapsedWidth="0" breakpoint="md">
+            <Sider 
+                collapsedWidth="0" 
+                breakpoint="md"
+                hidden={ocultarMenu}
+            >
                 <div className="demo-logo-vertical" />
                 <Menu
                     theme="dark"

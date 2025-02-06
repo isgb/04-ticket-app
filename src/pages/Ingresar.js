@@ -2,15 +2,18 @@ import React from 'react';
 import { Button, Checkbox, Divider, Form, Input, InputNumber, Typography } from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router';
+import { useHideMenu } from '../hooks/useHideMenu';
 
 const { Title, Text } = Typography;
 
 export const Ingresar = () => {
 
   const navigate = useNavigate();
+  useHideMenu(false);
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const onFinish = ({agente, escritorio}) => {
+    localStorage.setItem('agente', agente);
+    localStorage.setItem('escritorio', escritorio);
 
     navigate('/escritorio');  
   };

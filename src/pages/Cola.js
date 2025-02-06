@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Col, List, Row, Tag, Typography } from "antd";
+import { Card, Col, Divider, List, Row, Tag, Typography } from "antd";
+import { useHideMenu } from "../hooks/useHideMenu";
 
 const { Title, Text } = Typography;
 
@@ -42,6 +43,9 @@ const data = [
 ];
 
 export const Cola = () => {
+
+  useHideMenu(true);
+
   return (
     <>
       <Title level={1}> Atendiendo al cliente</Title>
@@ -67,7 +71,27 @@ export const Cola = () => {
           />
         </Col>
 
-        <Col span={12}></Col>
+        <Col span={12}>
+          <Divider>Historial</Divider>
+          <List
+            dataSource={data.slice(3)}
+            renderItem={(item) => (
+              <List.Item>
+                <List.Item.Meta
+                  title={`Ticket No. ${item.ticketNo}`}
+                  description={
+                    <>
+                      <Text type="secondary">En el escritorio: </Text>
+                      <Tag color="magenta">{item.escritorio}</Tag>
+                      <Text type="secondary">Agente: </Text>
+                      <Tag color="volcano">{item.agente}</Tag>
+                    </>
+                  }
+                />
+              </List.Item>
+            )}
+          />
+        </Col>
       </Row>
     </>
   );
