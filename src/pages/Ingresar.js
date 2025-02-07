@@ -26,6 +26,10 @@ export const Ingresar = () => {
     console.log('Failed:', errorInfo);
   };
 
+  if(usuario.agente && usuario.escritorio) {
+    navigate('/escritorio');
+  }
+
   return (
     <>
       <Title level={2}>Ingresar</Title>
